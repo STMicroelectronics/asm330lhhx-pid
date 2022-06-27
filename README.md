@@ -11,7 +11,7 @@ repository contains the sensor driver files(.h and .c) to be included,
                use the command:
 
                ```
-               git clone https://github.com/STMicroelectronics/asm330lhhx/
+               git clone https://github.com/STMicroelectronics/asm330lhhx-pid/
                ```
 
                Some examples of driver usage can be found [here](
