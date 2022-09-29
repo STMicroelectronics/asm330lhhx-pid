@@ -6455,6 +6455,67 @@ int32_t asm330lhhx_mag_x_orient_get(stmdev_ctx_t *ctx,
   */
 
 /**
+  * @brief  FSM status register[get]
+  *
+  * @param  ctx      read / write interface definitions
+  * @param  val      register ASM330LHHX_FSM_STATUS_A_MAINPAGE,
+  *                           ASM330LHHX_FSM_STATUS_B_MAINPAGE
+  *
+  */
+int32_t asm330lhhx_fsm_status_get(stmdev_ctx_t *ctx,
+                                  asm330lhhx_fsm_status_t *val)
+{
+  asm330lhhx_fsm_status_a_mainpage_t status_a;
+  asm330lhhx_fsm_status_b_mainpage_t status_b;
+  int32_t ret;
+
+  ret = asm330lhhx_read_reg(ctx, ASM330LHHX_FSM_STATUS_A_MAINPAGE,
+                            (uint8_t *)&status_a, 1);
+  ret = asm330lhhx_read_reg(ctx, ASM330LHHX_FSM_STATUS_B_MAINPAGE,
+                            (uint8_t *)&status_b, 1);
+
+  val->fsm1 = status_a.is_fsm1;
+  val->fsm2 = status_a.is_fsm2;
+  val->fsm3 = status_a.is_fsm3;
+  val->fsm4 = status_a.is_fsm4;
+  val->fsm5 = status_a.is_fsm5;
+  val->fsm6 = status_a.is_fsm6;
+  val->fsm7 = status_a.is_fsm7;
+  val->fsm8 = status_a.is_fsm8;
+  val->fsm9 = status_b.is_fsm9;
+  val->fsm10 = status_b.is_fsm10;
+  val->fsm11 = status_b.is_fsm11;
+  val->fsm12 = status_b.is_fsm12;
+  val->fsm13 = status_b.is_fsm13;
+  val->fsm14 = status_b.is_fsm14;
+  val->fsm15 = status_b.is_fsm15;
+  val->fsm16 = status_b.is_fsm16;
+  return ret;
+}
+
+/**
+  * @brief  prgsens_out: [get] Output value of all FSMs.
+  *
+  * @param  ctx_t *ctx: read / write interface definitions
+  * @param  uint8_t * : buffer that stores data read
+  *
+  */
+int32_t asm330lhhx_fsm_out_get(stmdev_ctx_t *ctx, uint8_t *buff)
+{
+  int32_t ret;
+  ret = asm330lhhx_mem_bank_set(ctx, ASM330LHHX_EMBEDDED_FUNC_BANK);
+  if (ret == 0)
+  {
+    ret = asm330lhhx_read_reg(ctx, ASM330LHHX_FSM_OUTS1, buff, 16);
+  }
+  if (ret == 0)
+  {
+    ret = asm330lhhx_mem_bank_set(ctx, ASM330LHHX_USER_BANK);
+  }
+  return ret;
+}
+
+/**
   * @brief  Interrupt status bit for FSM long counter timeout interrupt
   *         event.[get]
   *
@@ -6815,32 +6876,6 @@ int32_t asm330lhhx_long_clr_get(stmdev_ctx_t *ctx,
     default:
       *val = ASM330LHHX_LC_NORMAL;
       break;
-  }
-  return ret;
-}
-
-/**
-  * @brief  FSM output registers.[get]
-  *
-  * @param  ctx    Read / write interface definitions.(ptr)
-  * @param  val    Structure of registers from FSM_OUTS1 to FSM_OUTS16
-  * @retval        Interface status (MANDATORY: return 0 -> no Error).
-  *
-  */
-int32_t asm330lhhx_fsm_out_get(stmdev_ctx_t *ctx, asm330lhhx_fsm_out_t *val)
-{
-  int32_t ret;
-
-  ret = asm330lhhx_mem_bank_set(ctx, ASM330LHHX_EMBEDDED_FUNC_BANK);
-
-  if (ret == 0)
-  {
-    ret = asm330lhhx_read_reg(ctx, ASM330LHHX_FSM_OUTS1,
-                              (uint8_t *)&val->fsm_outs1, 16);
-  }
-  if (ret == 0)
-  {
-    ret = asm330lhhx_mem_bank_set(ctx, ASM330LHHX_USER_BANK);
   }
   return ret;
 }
