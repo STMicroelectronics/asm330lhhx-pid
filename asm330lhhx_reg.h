@@ -1801,9 +1801,6 @@ typedef struct
 #define ASM330LHHX_FSM_PROGRAMS                 0x17CU
 #define ASM330LHHX_FSM_START_ADD_L              0x17EU
 #define ASM330LHHX_FSM_START_ADD_H              0x17FU
-#define ASM330LHHX_PEDO_DEB_STEPS_CONF          0x184U
-#define ASM330LHHX_PEDO_SC_DELTAT_L             0x1D0U
-#define ASM330LHHX_PEDO_SC_DELTAT_H             0x1D1U
 
 #define ASM330LHHX_MLC_MAG_SENSITIVITY_L        0x1E8U
 #define ASM330LHHX_MLC_MAG_SENSITIVITY_H        0x1E9U
@@ -2609,7 +2606,7 @@ typedef enum
   ASM330LHHX_XL_ODR_1667Hz = 8,
   ASM330LHHX_XL_ODR_3333Hz = 9,
   ASM330LHHX_XL_ODR_6667Hz = 10,
-  ASM330LHHX_XL_ODR_6Hz5   = 11, /* (low power only) */
+  ASM330LHHX_XL_ODR_1Hz6   = 11, /* (low power only) */
 } asm330lhhx_odr_xl_t;
 int32_t asm330lhhx_xl_data_rate_set(stmdev_ctx_t *ctx, asm330lhhx_odr_xl_t val);
 int32_t asm330lhhx_xl_data_rate_get(stmdev_ctx_t *ctx,
@@ -3106,7 +3103,7 @@ typedef enum
   ASM330LHHX_XL_BATCHED_AT_1667Hz  =  8,
   ASM330LHHX_XL_BATCHED_AT_3333Hz  =  9,
   ASM330LHHX_XL_BATCHED_AT_6667Hz  = 10,
-  ASM330LHHX_XL_BATCHED_AT_6Hz5    = 11,
+  ASM330LHHX_XL_BATCHED_AT_1Hz6    = 11,
 } asm330lhhx_bdr_xl_t;
 int32_t asm330lhhx_fifo_xl_batch_set(stmdev_ctx_t *ctx,
                                      asm330lhhx_bdr_xl_t val);
@@ -3126,7 +3123,7 @@ typedef enum
   ASM330LHHX_GY_BATCHED_AT_1667Hz   = 8,
   ASM330LHHX_GY_BATCHED_AT_3333Hz   = 9,
   ASM330LHHX_GY_BATCHED_AT_6667Hz   = 10,
-  ASM330LHHX_GY_BATCHED_6Hz5        = 11,
+  ASM330LHHX_GY_BATCHED_AT_6Hz5     = 11,
 } asm330lhhx_bdr_gy_t;
 int32_t asm330lhhx_fifo_gy_batch_set(stmdev_ctx_t *ctx,
                                      asm330lhhx_bdr_gy_t val);

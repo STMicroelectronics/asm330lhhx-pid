@@ -509,8 +509,8 @@ int32_t asm330lhhx_xl_data_rate_get(stmdev_ctx_t *ctx,
     case ASM330LHHX_XL_ODR_6667Hz:
       *val = ASM330LHHX_XL_ODR_6667Hz;
       break;
-    case ASM330LHHX_XL_ODR_6Hz5:
-      *val = ASM330LHHX_XL_ODR_6Hz5;
+    case ASM330LHHX_XL_ODR_1Hz6:
+      *val = ASM330LHHX_XL_ODR_1Hz6;
       break;
     default:
       *val = ASM330LHHX_XL_ODR_OFF;
@@ -1171,7 +1171,7 @@ int32_t asm330lhhx_status_reg_get(stmdev_ctx_t *ctx,
   * @brief  Accelerometer new data available.[get]
   *
   * @param  ctx    Read / write interface definitions.(ptr)
-  * @param  val    Change the values of xlda in reg STATUS_REG
+  * @param  val    Get the values of xlda in reg STATUS_REG
   * @retval        Interface status (MANDATORY: return 0 -> no Error).
   *
   */
@@ -1191,7 +1191,7 @@ int32_t asm330lhhx_xl_flag_data_ready_get(stmdev_ctx_t *ctx, uint8_t *val)
   * @brief  Gyroscope new data available.[get]
   *
   * @param  ctx    Read / write interface definitions.(ptr)
-  * @param  val    Change the values of gda in reg STATUS_REG
+  * @param  val    Get the values of gda in reg STATUS_REG
   * @retval        Interface status (MANDATORY: return 0 -> no Error).
   *
   */
@@ -1211,7 +1211,7 @@ int32_t asm330lhhx_gy_flag_data_ready_get(stmdev_ctx_t *ctx, uint8_t *val)
   * @brief  Temperature new data available.[get]
   *
   * @param  ctx    Read / write interface definitions.(ptr)
-  * @param  val    Change the values of tda in reg STATUS_REG
+  * @param  val    Get the values of tda in reg STATUS_REG
   * @retval        Interface status (MANDATORY: return 0 -> no Error).
   *
   */
@@ -4690,8 +4690,8 @@ int32_t asm330lhhx_fifo_xl_batch_get(stmdev_ctx_t *ctx,
     case ASM330LHHX_XL_BATCHED_AT_6667Hz:
       *val = ASM330LHHX_XL_BATCHED_AT_6667Hz;
       break;
-    case ASM330LHHX_XL_BATCHED_AT_6Hz5:
-      *val = ASM330LHHX_XL_BATCHED_AT_6Hz5;
+    case ASM330LHHX_XL_BATCHED_AT_1Hz6:
+      *val = ASM330LHHX_XL_BATCHED_AT_1Hz6;
       break;
     default:
       *val = ASM330LHHX_XL_NOT_BATCHED;
@@ -4779,8 +4779,8 @@ int32_t asm330lhhx_fifo_gy_batch_get(stmdev_ctx_t *ctx,
     case ASM330LHHX_GY_BATCHED_AT_6667Hz:
       *val = ASM330LHHX_GY_BATCHED_AT_6667Hz;
       break;
-    case ASM330LHHX_GY_BATCHED_6Hz5:
-      *val = ASM330LHHX_GY_BATCHED_6Hz5;
+    case ASM330LHHX_GY_BATCHED_AT_6Hz5:
+      *val = ASM330LHHX_GY_BATCHED_AT_6Hz5;
       break;
     default:
       *val = ASM330LHHX_GY_NOT_BATCHED;
