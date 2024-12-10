@@ -6,7 +6,7 @@
  ******************************************************************************
  * @attention
  *
- * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
+ * <h2><center>&copy; Copyright (c) 2023 STMicroelectronics.
  * All rights reserved.</center></h2>
  *
  * This software component is licensed by ST under BSD 3-Clause license,
@@ -51,7 +51,10 @@ int32_t __weak asm330lhhx_read_reg(const stmdev_ctx_t *ctx, uint8_t reg, uint8_t
 {
   int32_t ret;
 
-  if (ctx == NULL) return -1;
+  if (ctx == NULL)
+  {
+    return -1;
+  }
 
   ret = ctx->read_reg(ctx->handle, reg, data, len);
 
@@ -73,7 +76,10 @@ int32_t __weak asm330lhhx_write_reg(const stmdev_ctx_t *ctx, uint8_t reg, uint8_
 {
   int32_t ret;
 
-  if (ctx == NULL) return -1;
+  if (ctx == NULL)
+  {
+    return -1;
+  }
 
   ret = ctx->write_reg(ctx->handle, reg, data, len);
 
@@ -3242,6 +3248,7 @@ int32_t asm330lhhx_pin_int1_route_set(const stmdev_ctx_t *ctx,
   {
     ret = asm330lhhx_write_reg(ctx, ASM330LHHX_MD1_CFG, (uint8_t *)&val->md1_cfg, 1);
   }
+
   if (ret == 0)
   {
     ret = asm330lhhx_read_reg(ctx, ASM330LHHX_INT_CFG1, (uint8_t *) &int_cfg1, 1);
@@ -4482,19 +4489,15 @@ int32_t asm330lhhx_fifo_watermark_set(const stmdev_ctx_t *ctx, uint16_t val)
   asm330lhhx_fifo_ctrl2_t fifo_ctrl2;
   int32_t ret;
 
-  ret = asm330lhhx_read_reg(ctx, ASM330LHHX_FIFO_CTRL2,
-                            (uint8_t *)&fifo_ctrl2, 1);
+  ret = asm330lhhx_read_reg(ctx, ASM330LHHX_FIFO_CTRL1, (uint8_t *)&fifo_ctrl1, 1);
+  ret += asm330lhhx_read_reg(ctx, ASM330LHHX_FIFO_CTRL2, (uint8_t *)&fifo_ctrl2, 1);
+
   if (ret == 0)
   {
+    fifo_ctrl1.wtm = (uint8_t)(val  & 0xFFU);
     fifo_ctrl2.wtm = (uint8_t)((val / 256U) & 0x01U);
-    ret = asm330lhhx_write_reg(ctx, ASM330LHHX_FIFO_CTRL2,
-                               (uint8_t *)&fifo_ctrl2, 1);
-  }
-  if (ret == 0)
-  {
-    fifo_ctrl1.wtm = (uint8_t)(val - (fifo_ctrl2.wtm * 256U));
-    ret = asm330lhhx_write_reg(ctx, ASM330LHHX_FIFO_CTRL1,
-                               (uint8_t *)&fifo_ctrl1, 1);
+    ret = asm330lhhx_write_reg(ctx, ASM330LHHX_FIFO_CTRL1, (uint8_t *)&fifo_ctrl1, 1);
+    ret += asm330lhhx_write_reg(ctx, ASM330LHHX_FIFO_CTRL2, (uint8_t *)&fifo_ctrl2, 1);
   }
 
   return ret;
@@ -5321,7 +5324,7 @@ int32_t asm330lhhx_fifo_sensor_tag_get(const stmdev_ctx_t *ctx,
       *val = ASM330LHHX_SENSORHUB_NACK_TAG;
       break;
     default:
-      *val = ASM330LHHX_SENSORHUB_NACK_TAG;
+      *val = ASM330LHHX_XL_NC_TAG;
       break;
   }
   return ret;
