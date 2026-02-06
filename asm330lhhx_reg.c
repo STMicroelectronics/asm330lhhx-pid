@@ -6378,12 +6378,11 @@ int32_t asm330lhhx_mag_soft_iron_set(const stmdev_ctx_t *ctx, uint16_t *val)
   buff[5] = (uint8_t)(val[2] / 256U);
   buff[4] = (uint8_t)(val[2] - (buff[5] * 256U));
   buff[7] = (uint8_t)(val[3] / 256U);
-  buff[6] = (uint8_t)(val[3] - (buff[1] * 256U));
+  buff[6] = (uint8_t)(val[3] - (buff[7] * 256U));
   buff[9] = (uint8_t)(val[4] / 256U);
-  buff[8] = (uint8_t)(val[4] - (buff[3] * 256U));
+  buff[8] = (uint8_t)(val[4] - (buff[9] * 256U));
   buff[11] = (uint8_t)(val[5] / 256U);
-  buff[10] = (uint8_t)(val[5] - (buff[5] * 256U));
-
+  buff[10] = (uint8_t)(val[5] - (buff[11] * 256U));
   i = 0x00U;
   ret = asm330lhhx_ln_pg_write_byte(ctx, ASM330LHHX_MAG_SI_XX_L, &buff[i]);
   if (ret == 0)
