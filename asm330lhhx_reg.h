@@ -3225,7 +3225,6 @@ typedef struct
 } asm330lhhx_fsm_status_t;
 int32_t asm330lhhx_fsm_status_get(const stmdev_ctx_t *ctx,
                                   asm330lhhx_fsm_status_t *val);
-int32_t asm330lhhx_fsm_out_get(const stmdev_ctx_t *ctx, uint8_t *buff);
 
 int32_t asm330lhhx_long_cnt_flag_data_ready_get(const stmdev_ctx_t *ctx,
                                                 uint8_t *val);
@@ -3259,6 +3258,28 @@ int32_t asm330lhhx_long_clr_set(const stmdev_ctx_t *ctx,
                                 asm330lhhx_fsm_lc_clr_t val);
 int32_t asm330lhhx_long_clr_get(const stmdev_ctx_t *ctx,
                                 asm330lhhx_fsm_lc_clr_t *val);
+
+typedef struct
+{
+  asm330lhhx_fsm_outs1_t    fsm_outs1;
+  asm330lhhx_fsm_outs2_t    fsm_outs2;
+  asm330lhhx_fsm_outs3_t    fsm_outs3;
+  asm330lhhx_fsm_outs4_t    fsm_outs4;
+  asm330lhhx_fsm_outs5_t    fsm_outs5;
+  asm330lhhx_fsm_outs6_t    fsm_outs6;
+  asm330lhhx_fsm_outs7_t    fsm_outs7;
+  asm330lhhx_fsm_outs8_t    fsm_outs8;
+  asm330lhhx_fsm_outs9_t    fsm_outs9;
+  asm330lhhx_fsm_outs10_t    fsm_outs10;
+  asm330lhhx_fsm_outs11_t    fsm_outs11;
+  asm330lhhx_fsm_outs12_t    fsm_outs12;
+  asm330lhhx_fsm_outs13_t    fsm_outs13;
+  asm330lhhx_fsm_outs14_t    fsm_outs14;
+  asm330lhhx_fsm_outs15_t    fsm_outs15;
+  asm330lhhx_fsm_outs16_t    fsm_outs16;
+} asm330lhhx_fsm_out_t;
+int32_t asm330lhhx_fsm_out_get(const stmdev_ctx_t *ctx,
+                               asm330lhhx_fsm_out_t *val);
 
 typedef enum
 {
