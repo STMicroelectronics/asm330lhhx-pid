@@ -3481,8 +3481,8 @@ int32_t asm330lhhx_sh_master_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
 typedef enum
 {
-  ASM330LHHX_EXT_PULL_UP      = 0,
-  ASM330LHHX_INTERNAL_PULL_UP = 1,
+  ASM330LHHX_INTERNAL_PULL_UP_OFF = 0,
+  ASM330LHHX_INTERNAL_PULL_UP_ON  = 1,
 } asm330lhhx_shub_pu_en_t;
 int32_t asm330lhhx_sh_pin_mode_set(const stmdev_ctx_t *ctx,
                                    asm330lhhx_shub_pu_en_t val);
