@@ -6059,7 +6059,7 @@ int32_t asm330lhhx_den_mark_axis_x_set(const stmdev_ctx_t *ctx, uint8_t val)
   ret = asm330lhhx_read_reg(ctx, ASM330LHHX_CTRL9_XL, (uint8_t *)&ctrl9_xl, 1);
   if (ret == 0)
   {
-    ctrl9_xl.den_z = (uint8_t)val;
+    ctrl9_xl.den_x = (uint8_t)val;
     ret = asm330lhhx_write_reg(ctx, ASM330LHHX_CTRL9_XL,
                                (uint8_t *)&ctrl9_xl, 1);
   }
@@ -6085,7 +6085,7 @@ int32_t asm330lhhx_den_mark_axis_x_get(const stmdev_ctx_t *ctx, uint8_t *val)
     return ret;
   }
 
-  *val = ctrl9_xl.den_z;
+  *val = ctrl9_xl.den_x;
 
   return ret;
 }
@@ -6153,8 +6153,9 @@ int32_t asm330lhhx_den_mark_axis_z_set(const stmdev_ctx_t *ctx, uint8_t val)
   ret = asm330lhhx_read_reg(ctx, ASM330LHHX_CTRL9_XL, (uint8_t *)&ctrl9_xl, 1);
   if (ret == 0)
   {
-    ctrl9_xl.den_x = (uint8_t)val;
-    ret = asm330lhhx_write_reg(ctx, ASM330LHHX_CTRL9_XL, (uint8_t *)&ctrl9_xl, 1);
+    ctrl9_xl.den_z = (uint8_t)val;
+    ret = asm330lhhx_write_reg(ctx, ASM330LHHX_CTRL9_XL,
+                               (uint8_t *)&ctrl9_xl, 1);
   }
   return ret;
 }
@@ -6178,7 +6179,7 @@ int32_t asm330lhhx_den_mark_axis_z_get(const stmdev_ctx_t *ctx, uint8_t *val)
     return ret;
   }
 
-  *val = ctrl9_xl.den_x;
+  *val = ctrl9_xl.den_z;
 
   return ret;
 }
