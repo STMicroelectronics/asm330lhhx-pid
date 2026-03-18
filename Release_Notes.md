@@ -30,7 +30,43 @@ This directory contains the ASM330LHHX component drivers.
 # Update history
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section7" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section8" checked aria-hidden="true">
+<label for="collapse-section8" aria-hidden="true">V2.4.0 / 18-Mar-2026</label>
+<div>
+
+## Main changes
+
+- Fix some MISRA issues
+- Add parameter names to stmdev callbacks to fix a MISRA issue
+- Add const qualifier to mag_soft_iron_set API
+- Remove declaration of unimplemented ln_pg_read API
+- Fix hp_slope_xl_en_t LP_ODR_DIV_4 hex value
+- Remove outdated incorrect comment
+- Update sh_read_data_raw_get API to use a raw uint8_t buffer
+- Update fsm_out_get API to read raw uint8_t buffer.
+- Fix xl_hp_path_on_out_set/get API and hp_slope_xl_en_t enum
+- Change switch cases to use hex values
+- Re-order update history with most updated on top
+- Fix style
+- Change fsm_out_get return type
+- Fix den_xl_g_t values
+- Fix odr_t_batch_t values
+- Remove register union
+- Rename variants for shub_pu_en_t enum
+- Fix emb_fsm_en_get, remove useless write
+- Fix mag_soft_iron_set
+- Fix den_mark_axis_x/z_set_get APIs
+- Rename filter_settling_mask_set/get in drdy_mask_set/get
+- Fix odr_cal_reg_set/get API, change type uint8 to int8
+- Change type of xl_usr_offset_x/y/z_set/get APIs uint8 to int8
+- Move MLC_STATUS read to MLC_STATUS_MAINPAGE in all_sources_get API
+- Fix xl/gy_data_rate_set APIs
+
+##
+
+</div>
+
+<input type="checkbox" id="collapse-section7" aria-hidden="true">
 <label for="collapse-section7" aria-hidden="true">V2.3.0 / 07-Oct-2025</label>
 <div>
 
@@ -43,6 +79,7 @@ This directory contains the ASM330LHHX component drivers.
 ##
 
 </div>
+
 <input type="checkbox" id="collapse-section6" aria-hidden="true">
 <label for="collapse-section6" aria-hidden="true">V2.2.0 / 07-Jul-2025</label>
 <div>
