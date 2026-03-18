@@ -1860,9 +1860,9 @@ int32_t asm330lhhx_mem_bank_set(const stmdev_ctx_t *ctx,
 int32_t asm330lhhx_mem_bank_get(const stmdev_ctx_t *ctx,
                                 asm330lhhx_reg_access_t *val);
 
-int32_t asm330lhhx_ln_pg_write_byte(const stmdev_ctx_t *ctx, uint16_t address,
+int32_t asm330lhhx_ln_pg_write_byte(const stmdev_ctx_t *ctx, uint16_t add,
                                     uint8_t *val);
-int32_t asm330lhhx_ln_pg_write(const stmdev_ctx_t *ctx, uint16_t address,
+int32_t asm330lhhx_ln_pg_write(const stmdev_ctx_t *ctx, uint16_t add,
                                uint8_t *buf, uint8_t len);
 int32_t asm330lhhx_ln_pg_read_byte(const stmdev_ctx_t *ctx, uint16_t add,
                                    uint8_t *val);
