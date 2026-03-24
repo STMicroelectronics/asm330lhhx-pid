@@ -119,6 +119,7 @@ typedef int32_t (*stmdev_read_ptr)(
   uint8_t reg,
   uint8_t *buf,
   uint16_t len);
+
 typedef void (*stmdev_mdelay_ptr)(uint32_t millisec);
 
 typedef struct
@@ -2406,7 +2407,7 @@ int32_t asm330lhhx_mag_sensitivity_set(const stmdev_ctx_t *ctx,
 int32_t asm330lhhx_mag_sensitivity_get(const stmdev_ctx_t *ctx,
                                        uint16_t *val);
 
-int32_t asm330lhhx_mag_offset_set(const stmdev_ctx_t *ctx, int16_t *val);
+int32_t asm330lhhx_mag_offset_set(const stmdev_ctx_t *ctx, const int16_t *val);
 int32_t asm330lhhx_mag_offset_get(const stmdev_ctx_t *ctx, int16_t *val);
 
 int32_t asm330lhhx_mag_soft_iron_set(const stmdev_ctx_t *ctx,
@@ -2563,7 +2564,7 @@ int32_t asm330lhhx_mlc_data_rate_get(const stmdev_ctx_t *ctx,
 int32_t asm330lhhx_mlc_init_set(const stmdev_ctx_t *ctx, uint8_t val);
 int32_t asm330lhhx_mlc_init_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
-int32_t asm330lhhx_mlc_out_get(const stmdev_ctx_t *ctx, uint8_t *buff);
+int32_t asm330lhhx_mlc_out_get(const stmdev_ctx_t *ctx, uint8_t *val);
 int32_t asm330lhhx_mlc_mag_sensitivity_set(const stmdev_ctx_t *ctx, uint16_t val);
 int32_t asm330lhhx_mlc_mag_sensitivity_get(const stmdev_ctx_t *ctx, uint16_t *val);
 
